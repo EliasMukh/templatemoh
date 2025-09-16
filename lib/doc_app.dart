@@ -15,6 +15,7 @@ class DocApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        //fake
         title: 'Doc App',
         //fake
         theme: ThemeData(
