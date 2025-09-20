@@ -1,13 +1,91 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:templatemoh/core/helpers/spacing.dart';
+import 'package:templatemoh/core/theming/styles.dart';
+import 'package:templatemoh/core/widgets/app_text_button.dart';
+import 'package:templatemoh/core/widgets/app_text_form_field.dart';
+import 'package:templatemoh/features/home/ui/widgets/dont_have_account_text.dart';
+import 'package:templatemoh/features/home/ui/widgets/terms_and_conditions_text.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final formKey = GlobalKey<FormState>();
+  bool isObscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Docdoc')),
-      body: Center(child: Text('login screen ')),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Welcome Back ', style: TextStyles.font24BlueBold),
+                verticalSpace(8),
+                Text(
+                  'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
+                  style: TextStyles.font14GrayRegular,
+                  maxLines: 3,
+                ),
+                verticalSpace(30),
+
+                ///     30.verticalSpace,
+                Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      AppTextFormField(hintText: 'Email'),
+                      verticalSpace(8),
+                      AppTextFormField(
+                        hintText: 'Password',
+                        isObscureText: isObscureText,
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isObscureText = !isObscureText;
+                            });
+                          },
+                          child: Icon(
+                            isObscureText
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                          ),
+                        ),
+                      ),
+                      verticalSpace(20),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          'Forget Password?',
+                          style: TextStyles.font13BlueRegular,
+                        ),
+                      ),
+                      verticalSpace(40),
+                      AppTextButton(
+                        buttonText: 'Login',
+                        textStyle: TextStyles.font16WhiteSemiBold,
+                        onPressed: () {},
+                      ),
+                      verticalSpace(16),
+                      TermsAndConditionsText(),
+                      verticalSpace(60),
+                      DontHaveAccountText(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
