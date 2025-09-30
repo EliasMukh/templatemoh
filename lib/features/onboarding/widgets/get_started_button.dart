@@ -14,14 +14,12 @@ class GetStartedButton extends StatelessWidget {
       padding: EdgeInsets.only(right: 20.w, left: 20.w),
       child: TextButton(
         style: ButtonStyle(
-          shape: MaterialStateProperty.all(
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           ),
-          backgroundColor: MaterialStateProperty.all(ColorsManager.mainBlue),
+          backgroundColor: WidgetStateProperty.all(ColorsManager.mainBlue),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          minimumSize: MaterialStateProperty.all(
-            const Size(double.infinity, 52),
-          ),
+          minimumSize: WidgetStateProperty.all(const Size(double.infinity, 52)),
         ),
 
         onPressed: () {
