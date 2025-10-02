@@ -20,12 +20,12 @@ class _ApiService implements ApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<LoginResponseBody> login(LoginRequestBody body) async {
+  Future<LoginResponseBody> login(LoginRequestBody loginRequestBody) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body.toJson());
+    _data.addAll(loginRequestBody.toJson());
     final _options = _setStreamType<LoginResponseBody>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
@@ -40,6 +40,34 @@ class _ApiService implements ApiService {
     late LoginResponseBody _value;
     try {
       _value = LoginResponseBody.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<SignUpResponseBody> signup(SignUpRequestBody signupRequestBody) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(signupRequestBody.toJson());
+    final _options = _setStreamType<SignUpResponseBody>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'auth/register',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SignUpResponseBody _value;
+    try {
+      _value = SignUpResponseBody.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
