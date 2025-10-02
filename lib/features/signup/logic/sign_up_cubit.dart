@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:templatemoh/core/networking/api_result.dart';
 import 'package:templatemoh/features/signup/data/models/sign_up_request_body.dart';
-import 'package:templatemoh/features/signup/data/models/sign_up_response_body.dart';
 import 'package:templatemoh/features/signup/data/repo/sign_up_repo.dart';
 import 'package:templatemoh/features/signup/logic/sign_up_state.dart';
 
