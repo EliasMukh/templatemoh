@@ -9,7 +9,7 @@ platform :android do
     app: "1:230388692087:android:4afd6faf12b156f3c14272",
     android_artifact_type: "APK",
     android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
-    firebase_cli_token: "1//0cNcUL40qtaSRCgYIARAAGAwSNwF-L9IryEPadfA0mvMC5euKo8wICVDSHa6jKrRsg4Mfx8I0Mqb2hy6gbQKL7dmIIBd4wWAG8MM",
+    firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
     testers: "eliasmkh08@gmail.com",
     release_notes: "First Fastlane Firebase Distribution"
 
