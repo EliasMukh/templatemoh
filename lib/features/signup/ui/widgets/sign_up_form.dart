@@ -66,9 +66,10 @@ class _SignupFormState extends State<SignupForm> {
           AppTextFormField(
             hintText: 'Phone number',
             validator: (value) {
-              if (value == null ||
-                  value.isEmpty ||
-                  !AppRegex.isPhoneNumberValid(value)) {
+              if (value == null || value.isEmpty
+              // ||
+              // !AppRegex.isPhoneNumberValid(value)
+              ) {
                 return 'Please enter a valid phone number';
               }
             },
