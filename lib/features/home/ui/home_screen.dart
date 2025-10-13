@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:templatemoh/features/home/ui/widgets/doctors_blue_container.dart';
+import 'package:templatemoh/features/home/ui/widgets/home_top_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -6,8 +8,19 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: const Center(child: Text('Welcome to the Home Screen')),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Container(
+          //    color: Colors.amber,
+          width: double.infinity,
+
+          margin: EdgeInsets.fromLTRB(20, 16, 20, 28),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [const HomeTopBar(), DoctorsBlueContainer()],
+          ),
+        ),
+      ),
     );
   }
 }

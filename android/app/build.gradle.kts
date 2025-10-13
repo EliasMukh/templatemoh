@@ -30,8 +30,7 @@ android {
         versionName = flutter.versionName
     }
 
-    // ✅ buildTypes داخل نفس الكتلة
-    buildTypes {
+     buildTypes {
         getByName("debug") {
             isMinifyEnabled = false
         }
@@ -46,12 +45,11 @@ android {
         }
     }
 
-    // ✅ تعريف الـ Flavors بشكل صحيح
-    flavorDimensions += "default"
+     flavorDimensions += "default"
     productFlavors {
         create("development") {
             dimension = "default"
-            applicationIdSuffix = ".dev"
+            applicationIdSuffix = ".development"
             versionNameSuffix = "-dev"
             resValue("string", "app_name","DocDoc development")
         }
